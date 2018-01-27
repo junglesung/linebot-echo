@@ -1,24 +1,45 @@
-# Flask Echo
+# Text Line Bot
 
-Sample echo-bot using [Flask](http://flask.pocoo.org/)
+This is a very simple [Line bot](https://developers.line.me/en/docs/messaging-api/overview/) writen in [Python](https://www.python.org/) and executed on [Heroku](https://www.heroku.com/). 
 
 ## Getting started
 
-```
-$ export LINE_CHANNEL_SECRET=YOUR_LINE_CHANNEL_SECRET
-$ export LINE_CHANNEL_ACCESS_TOKEN=YOUR_LINE_CHANNEL_ACCESS_TOKEN
-
-$ pip install -r requirements.txt
-```
-
-Run WebhookParser sample
+Change to your channel secret and access token.
 
 ```
-$ python app.py
+LINE_CHANNEL_SECRET = 'YOUR_LINE_CHANNEL_SECRET'
+LINE_CHANNEL_ACCESS_TOKEN = 'YOUR_LINE_CHANNEL_ACCESS_TOKEN'
 ```
 
-Run WebhookHandler sample
+Reply the same words
 
 ```
-$ python app_with_handler.py
+line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text))
 ```
+
+or say something to yourself
+
+```
+line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text='Say something'))
+```
+
+## Reference
+### Line bot
+
+[Tutorial](https://devcenter.heroku.com/articles/getting-started-with-python)
+
+[Source code](https://github.com/line/line-bot-sdk-python)
+
+### Heroku
+
+[Tutorial](https://devcenter.heroku.com/articles/getting-started-with-python)
+
+[Source code](https://github.com/heroku/python-getting-started)
+
+### Flask
+
+[Web site](http://flask.pocoo.org/)
