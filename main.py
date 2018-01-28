@@ -15,8 +15,8 @@ app = Flask(__name__)
 # Replace by your channel secret and access token from Line Developers console -> Channel settings.
 LINE_CHANNEL_SECRET = 'SjtzxUrFzMtJA074sK6HZvkxFKp6BfewjrQMroDZ++hqwT+W9Zf37C/bJLAgQzXRm2ooSAKFmLzNg6G8PC9B/NeE91Er4/eQItxBhvv8YocEq7c+0/kqbhQ8q0mT0es9sTrgpdcD7Dwk6iEXgIFhcgdB04t89/1O/w1cDnyilFU='
 LINE_CHANNEL_ACCESS_TOKEN = '1fe3235aef7d160e249ec58405fd9542'
-line_bot_api = LineBotApi(LINE_CHANNEL_SECRET)
-handler = WebhookHandler(LINE_CHANNEL_ACCESS_TOKEN)
+line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 
 @app.route("/", methods=['POST'])
@@ -42,7 +42,7 @@ def handle_message(event):
     # Replace the text by what you want to say
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text='周子瑜: '+event.message.text))
+        TextSendMessage(text=event.message.text))
 
 
 if __name__ == "__main__":
