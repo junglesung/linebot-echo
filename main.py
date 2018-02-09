@@ -99,7 +99,7 @@ def line_bot_car_suggestion_response(event, result):
     for p in result['products']:
         image_url = p['photo']
         title = p['brand'] + ' ' + p['name']
-        price = '價格 $ %f - %f 萬' % (p['min_price'], p['max_price'])
+        price = '價格 $ %.1f - %.1f 萬' % (p['min_price'], p['max_price'])
         action_intro = URITemplateAction(label='詳細資料', uri=p['introduction'])
         carousel_obj = CarouselColumn(thumbnail_image_url=image_url,
                                       title=title,
